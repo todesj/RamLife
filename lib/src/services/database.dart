@@ -18,6 +18,26 @@ export "databases/schedule/hybrid.dart";
 export "databases/sports/hybrid.dart";
 export "databases/user/hybrid.dart";
 
+abstract class ClubService {
+	Future<List<Map>> getAll();
+	Future<void> register(String id, String email, Map json);
+	Future<void> unregister(String id, String email, Map json);
+	late HybridClubAdmin admin;
+}
+
+abstract class HybridClubAdmin {
+	Future<void> upload(String id, Map json);
+	Future<void> delete(String id);
+	Future<void> approve(String id);
+
+	Future<void> postMessage(String id, Map json);
+	Future<void> removeMember(String id, String email);
+	Future<void> setAttendance(String id, Object attendance);
+	Future<void> modifyMeeting(String id, DateTime oldDate, DateTime? newDate);
+}
+// Club.facultyAdvisor -> Club.facultyAdvisors
+// AdminScope.clubs
+
 /// A wrapper around all data in all database. 
 /// 
 /// The database is split into 2N parts: N types of data, with a Firestore and 
@@ -34,6 +54,8 @@ class Database extends DatabaseService {
 
 	/// The local database. 
 	final Idb idb = Idb();
+
+	late ClubService clubs;
 
 	// ----------------------------------------------------------------
 	// The data managers for each category 

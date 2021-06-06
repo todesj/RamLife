@@ -9,7 +9,7 @@ import "package:ramaz/services.dart";
 // TODO: implement a stream-based interface.
 class ClubCaptainModel {
 	/// The service for all club admins.
-	HybridClubAdmin service = Services.instance.database.clubs.admin;
+	final HybridClubAdmin service = Services.instance.database.clubs.admin;
 
 	/// The club being managed. 
 	final Club club;

@@ -18,9 +18,6 @@ export "databases/schedule/hybrid.dart";
 export "databases/sports/hybrid.dart";
 export "databases/user/hybrid.dart";
 
-// Club.facultyAdvisor -> Club.facultyAdvisors
-// AdminScope.clubs
-
 /// A wrapper around all data in all database. 
 /// 
 /// The database is split into 2N parts: N types of data, with a Firestore and 
